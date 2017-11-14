@@ -61,7 +61,7 @@ def add_donor(request):
                             Email=Email,PhoneNumber=PhoneNumber,Comments=Comments,StreetAddress=StreetAddress,City=City,State=State,Zip=Zip,ICS=ICS)
       LoadDonorObj.save()
 
-      return render(request,'ics_tool/donor_Success.html',{})
+      return render(request,'ics_tool/donor_success.html',{})
 
     print(form.errors)
 
