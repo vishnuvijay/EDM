@@ -9,3 +9,28 @@ class CustomerForm(forms.ModelForm):
     class Meta:
         model = Customer
         fields = '__all__'
+
+class AddDonorForm(forms.ModelForm):
+    OrganizationName    = forms.CharField(max_length=100)
+    Salutation          = forms.CharField(max_length=100)
+    FirstName           = forms.CharField(max_length=100)
+    LastName            = forms.CharField(max_length=100)
+    Email               = forms.EmailField(max_length=100)
+    PhoneNumber         = forms.CharField(max_length=15)
+    Comments            = forms.CharField(max_length=100,required=False)
+    StreetAddress       = forms.CharField(max_length=100)
+    City                = forms.CharField(max_length=100)
+    State               = forms.CharField(max_length=100)
+    Zip                 = forms.CharField(max_length=100)
+    ICS                 = forms.CharField(max_length=2,required=False)
+
+    class Meta:
+        model = Donors
+        fields = '__all__'
+
+class SearchDonorForm(forms.ModelForm):
+    SearchQuery = forms.CharField(max_length=255)
+
+    class Meta:
+        model = SearchDonor
+        fields = '__all__'
