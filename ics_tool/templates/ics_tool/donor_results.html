@@ -1,0 +1,107 @@
+{% extends 'ics_tool/base.html' %}
+{% block head %}
+      {{ block.super }}
+      {# Load the tag library #}
+      {% load bootstrap3 %}
+
+      {# Load CSS #}
+      {# Bootstrap javascript was not loaded due to compatability issues in using Modal. dataTables.min.js also loads bootsrap js by default #}
+      {# Loading bootstrap js twice would fade the modal immediately #}
+      {% bootstrap_css %}
+
+      {# Display django.contrib.messages as Bootstrap alerts #}
+      {% bootstrap_messages %}
+
+      {% load static %}
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+
+      <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+      <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+{% endblock %}
+
+{% block content %}
+<div class="wrapper wrapper-content animated fadeInRight">
+<div class="row">
+  <h3>Search Results</h3>
+    <div class="col-lg-12">
+    <div class="table-responsive">
+    <div class="dataTables_wrapper form-inline dt-bootstrap">
+    <table id="rfx_table" class="table table-list-search table-striped table-bordered table-hover dataTables-example dataTable" style="width=100%;" role="grid">
+    <thead>
+      <tr role="row">
+        <th style="text-align: center;font-family: 'Calibri', Arial, sans-serif ;">First Name</th>
+        <th style="text-align: center;font-family: 'Calibri', Arial, sans-serif ;">Last Name</th>
+      </tr>
+    </thead>
+   <tbody>
+     {% for values in Results %}
+     <tr>
+       <td align="left" style="font-family: 'Calibri', Arial, sans-serif;">{{ values.FirstName }}</td>
+       <td align="center" style="font-family: 'Calibri', Arial, sans-serif;">{{ values.LastName }}</td>
+     </tr>
+     {% endfor %}
+    </tbody>
+    </table>
+  </div>
+	</div>
+</div>
+</div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">More Details</h4>
+      </div>
+      <div class="panel panel-default modal-body">
+        <div class="panel-body">
+          <div class="list-group">
+            <table id="rfx_table2" class="table table-striped table-bordered table-hover" style="width=100%;" role="grid">
+            <tbody>
+              <tr>
+               <td align="center" style="font-family: 'Calibri', Arial, sans-serif;">Customer Name</td>
+               <td align="left" style="font-family: 'Calibri', Arial, sans-serif;"><p id="showcust"></p></td>
+              </tr>
+              <tr>
+               <td align="center" style="font-family: 'Calibri', Arial, sans-serif;">Red Hat Unique Id</td>
+               <td align="left" style="font-family: 'Calibri', Arial, sans-serif;"><p id="showid"></p></td>
+              </tr>
+              <tr>
+              <td align="center" style="font-family: 'Calibri', Arial, sans-serif;">Requirement</td>
+              <td align="left" style="font-family: 'Calibri', Arial, sans-serif;"><p id="showreq"></p></td>
+             </tr>
+             <tr>
+              <td align="center" style="font-family: 'Calibri', Arial, sans-serif;">Compliance Status</td>
+              <td align="left" style="font-family: 'Calibri', Arial, sans-serif;"><p id="showcomp"></p></td>
+             </tr>
+             <tr>
+              <td align="center" style="font-family: 'Calibri', Arial, sans-serif;">External Comments</td>
+              <td align="left" style="font-family: 'Calibri', Arial, sans-serif;"><p id="showext"></p></td>
+             </tr>
+             <tr>
+              <td align="center" style="font-family: 'Calibri', Arial, sans-serif;">Internal Comments</td>
+              <td align="left" style="font-family: 'Calibri', Arial, sans-serif;"><p id="showint"></p></td>
+             </tr>
+             <tr>
+              <td align="center" style="font-family: 'Calibri', Arial, sans-serif;">User Details</td>
+              <td align="left" style="font-family: 'Calibri', Arial, sans-serif;"><p id="showuserN"></p></td>
+             </tr>
+            </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
