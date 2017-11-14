@@ -1,0 +1,43 @@
+{% extends 'ics_tool/base.html' %}
+{% block head %}
+      {{ block.super }}
+      {# Load the tag library #}
+      {% load bootstrap3 %}
+
+      {# Display django.contrib.messages as Bootstrap alerts #}
+      {% bootstrap_messages %}
+
+      {% load static %}
+      <!-- Include Required Prerequisites -->
+      <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+      <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <form action="{% url 'ics_tool:search_donor' %}" method="post"  class="form-horizontal">
+
+  {% csrf_token %}
+
+  <div class="container">
+    <div class="row">
+      <h2>Search Donor</h2>
+      <div id="custom-search-input">
+        <div class="input-group col-md-12">
+          <input type="text" class="search-query form-control" name="SearchQuery" placeholder="Search" />
+          <span class="input-group-btn">
+            <button class="btn btn-danger" type="submit">
+              <span class=" glyphicon glyphicon-search"></span>
+            </button>
+          </span>
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+</form>
+</div>
+{% endblock %}
