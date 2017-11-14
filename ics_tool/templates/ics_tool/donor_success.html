@@ -1,0 +1,36 @@
+{% extends 'ics_tool/base.html' %}
+{% block head %}
+      {{ block.super }}
+      {# Load the tag library #}
+      {% load bootstrap3 %}
+
+      {# Load CSS and JavaScript #}
+      {% bootstrap_css %}
+      {% bootstrap_javascript %}
+
+      {# Display django.contrib.messages as Bootstrap alerts #}
+      {% bootstrap_messages %}
+
+      {% load static %}
+{% endblock %}
+
+{% block content %}
+
+<br>
+<div class="alert alert-success fade in">
+  <a href="#" class="close" data-dismiss="alert">&times;</a>
+  <strong>Success!</strong> The Donor has been successfully loaded.
+</div>
+
+<h3>Do you want to add another DONOR?</h3>
+{% buttons %}
+
+<div class="form-group">
+  <div class="col-sm-6">
+    <button type="submit" class="btn btn-info ">Yes</button>
+    <button type="submit" class="btn btn-info pull-right">No</button>
+  </div>
+</div>
+  {% endbuttons %}
+
+{% endblock %}
