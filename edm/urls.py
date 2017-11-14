@@ -22,5 +22,5 @@ from ics_tool import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'', include('ics_tool.urls')),
+    url(r'', include('ics_tool.urls',namespace="ics_tool")),
 ]
