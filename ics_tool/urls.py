@@ -7,6 +7,9 @@ from . import views
 app_name='ics_tool'
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'^donor$', views.add_donor, name='add_donor'),
+    url(r'^search_donor$', views.search_donor, name='search_donor'),
+
 ]
 
 if not settings.DEBUG:
